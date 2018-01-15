@@ -81,3 +81,5 @@ project/plugins/project/
 .ensime
 
 metastore_db
+
+data/
