@@ -6,18 +6,15 @@ import org.elasticsearch.spark.sql._
 object Main {
   def main(args: Array[String]) {
     val spark = SparkSessionHelper.buildSession()
+    // write to elasticsearch local (docker)
+    val df2 = spark.read.format("json").load("data/people.json")
+    df2.show()
+    df2.saveToEs("people/person")
 
-    val numbers = Map("one" -> 1, "two" -> 2, "three" -> 3)
-    val airports = Map("OTP" -> "Otopeni", "SFO" -> "San Fran")
-
-    //    sc.makeRDD(Seq(numbers, airports)).saveToEs("spark/docs")
-    //    val df = spark.read.format("json").load("data/people.json")
-    //    df.show()
-    //    df.saveToEs("spark/people")
+    // read from elasticsearch local
     val df = spark.read
       .format("es")
-      .load("twitter/tweet")
-
+      .load("people/person")
     df.show()
     spark.close()
   }
