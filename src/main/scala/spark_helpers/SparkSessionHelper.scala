@@ -7,6 +7,8 @@ object SparkSessionHelper {
   def buildSession(): SparkSession = {
 
     val sparkMaster = ConfigFactory.load().getString("spark.conf.master.value")
+    val esSingleNode = ConfigFactory.load().getString("elastic.single_node.url.value")
+    val esSinglePort = ConfigFactory.load().getString("elastic.single_node.port.value")
 
     println("Spark Master: ", sparkMaster)
 
@@ -16,8 +18,8 @@ object SparkSessionHelper {
       .enableHiveSupport()
       .config("es.index.auto.create", "true")
       .config("pushdown", "true")
-      .config("es.nodes", "127.0.0.1")
-      .config("es.port", "9200")
+      .config("es.nodes", esSingleNode)
+      .config("es.port", esSinglePort)
       .config("es.nodes.discovery", "false")
       .config("es.nodes.data.only", "false")
       .getOrCreate
