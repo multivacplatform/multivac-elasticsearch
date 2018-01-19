@@ -16,21 +16,9 @@ object SparkSessionHelper {
       .appName("multivac-elastic")
       .master(sparkMaster)
       .enableHiveSupport()
-      .config("es.index.auto.create", "true")
-      .config("pushdown", "true")
-      .config("es.nodes", esSingleNode)
-      .config("es.port", esSinglePort)
-      .config("es.nodes.discovery", "false")
-      .config("es.nodes.data.only", "false")
       .getOrCreate
 
-//    spark.conf.set("es.index.auto.create", "true")
-//    spark.conf.set("pushdown", "true")
-//    spark.conf.set("es.nodes", "192.168.1.137")
-//    spark.conf.set("es.nodes.discovery", "false")
-//    spark.conf.set("es.port", "9200")
-
-    spark.sparkContext.setLogLevel("WARN")
+    spark.sparkContext.setLogLevel("INFO")
 
     spark
   }
