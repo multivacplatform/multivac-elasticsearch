@@ -36,7 +36,7 @@ libraryDependencies ++= {
     "org.apache.spark" %% "spark-graphx" % sparkVer % "provided" withSources(),
     "org.apache.spark" %% "spark-yarn" % sparkVer % "provided" withSources(),
     "com.typesafe" % "config" % "1.3.2",
-    "org.elasticsearch" %% "elasticsearch-spark-20" % "5.6.5"
+    "org.elasticsearch" %% "elasticsearch-spark-20" % "5.6.3"
   )
 }
 
