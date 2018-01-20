@@ -6,9 +6,7 @@ import org.apache.spark.sql.SparkSession
 object SparkSessionHelper {
   def buildSession(): SparkSession = {
 
-    val sparkMaster = ConfigFactory.load().getString("spark.conf.master.value")
-    val esSingleNode = ConfigFactory.load().getString("elastic.single_node.url.value")
-    val esSinglePort = ConfigFactory.load().getString("elastic.single_node.port.value")
+    val sparkMaster = ConfigFactory.load().getString("spark.conf.master")
 
     println("Spark Master: ", sparkMaster)
 
