@@ -10,7 +10,7 @@ licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT"))
 
 resolvers ++= Seq(
   "JBoss Repository" at "http://repository.jboss.org/nexus/content/repositories/releases/",
-  "Spray Repository" at "http://repo.spray.cc/",
+//  "Spray Repository" at "http://repo.spray.cc/",
   "Cloudera Repository" at "https://repository.cloudera.com/artifactory/cloudera-repos/",
   "Akka Repository" at "http://repo.akka.io/releases/",
   "Twitter4J Repository" at "http://twitter4j.org/maven2/",
@@ -36,7 +36,7 @@ libraryDependencies ++= {
     "org.apache.spark" %% "spark-graphx" % sparkVer % "provided" withSources(),
     "org.apache.spark" %% "spark-yarn" % sparkVer % "provided" withSources(),
     "com.typesafe" % "config" % "1.3.2",
-    "org.elasticsearch" %% "elasticsearch-spark-20" % "5.6.3"
+    "org.elasticsearch" %% "elasticsearch-spark-20" % "6.1.0"
   )
 }
 
