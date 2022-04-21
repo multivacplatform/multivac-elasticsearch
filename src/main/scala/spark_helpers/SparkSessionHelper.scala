@@ -16,12 +16,12 @@ object SparkSessionHelper {
       .enableHiveSupport()
       .getOrCreate
 
-    spark.sparkContext.setLogLevel("INFO")
+    spark.sparkContext.setLogLevel("WARN")
 
     spark
   }
 
-  def getSparkSession(): SparkSession ={
+  def getSparkSession: SparkSession = {
     SparkSession.builder().getOrCreate()
   }
 }
