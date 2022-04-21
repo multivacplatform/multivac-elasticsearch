@@ -83,3 +83,5 @@ project/plugins/project/
 metastore_db
 
 data/
+/.bsp/
+tmp**
