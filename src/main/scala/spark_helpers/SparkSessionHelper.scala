@@ -6,7 +6,7 @@ import org.apache.spark.sql.SparkSession
 object SparkSessionHelper {
   def buildSession(): SparkSession = {
 
-    val sparkMaster = ConfigFactory.load().getString("spark.conf.master")
+    val sparkMaster = ConfigFactory.load().getString("spark.conf.master.value")
 
     println("Spark Master: ", sparkMaster)
 
