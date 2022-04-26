@@ -15,12 +15,6 @@ object RetweetGraph {
   def main(args: Array[String]) {
     val spark = SparkSessionHelper.buildSession()
 
-    println(appConf.getString("spark.elastic.nodes.wanOnly.value"))
-    println(appConf.getString("spark.elastic.nodes.url.value"))
-    println(appConf.getString("spark.elastic.nodes.port.value"))
-    println(appConf.getString("spark.elastic.proxy.authUser.value"))
-    println(appConf.getString("spark.elastic.proxy.authPass.value"))
-
     val esOptions = Map(
       "es.index.auto.create" -> appConf.getString("spark.elastic.nodes.autoCreate.value"),
       "pushdown" -> appConf.getString("spark.elastic.index.pushdown.value"),
@@ -42,8 +36,8 @@ object RetweetGraph {
         "spark.elastic.index.max_result_window.value"),
       "es.input.json" -> appConf.getString("spark.elastic.index.inputJson.value"))
 
-    val (until, since) = rangeBuilder(2, 1)
-    println(s"since $since until $until")
+    val (until, since) = rangeBuilder(17, 1)
+    println(s"date range: since $since to until $until")
 
     val q =
       s""" {"query": {"bool": {"must": [{"exists": {"field": "retweeted_status"}},{"range": {"ca": {"gte": "$since", "lte": "$until"}}}]}}}""".stripMargin
