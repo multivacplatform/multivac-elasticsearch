@@ -36,7 +36,9 @@ object RetweetGraph {
         "spark.elastic.index.max_result_window.value"),
       "es.input.json" -> appConf.getString("spark.elastic.index.inputJson.value"))
 
-    val (until, since) = rangeBuilder(17, 1)
+    val (until, since) = rangeBuilder(
+      appConf.getInt("spark.elastic.index.until_date.value"),
+      appConf.getInt("spark.elastic.index.since_date.value"))
     println(s"date range: since $since to until $until")
 
     val q =
